@@ -1,0 +1,10 @@
+# for Visual Studio v13 and earlier
+/*.user
+/*.suo
+/*.sdf
+
+# for Visual Studio v14+
+/.vs
+
+/bin
+/obj
