@@ -1,0 +1,5 @@
+
+namespace StrEnc.Utils
+{
+
+}
