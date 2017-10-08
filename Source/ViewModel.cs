@@ -210,12 +210,12 @@ namespace StrEnc.Info
 
                     foreach (byte b in n)
                     {
-                        str1.Append(b.ToString("X2"));
+                        str1.Append(b.ToString("X2") + byte_separator);
                         ++gl;
 
                         if (gl == grouping_mode) 
                         {
-                            str1.Append(' '); 
+                            str1.Append(word_separator); 
                             gl = 0; 
                         }
                     }

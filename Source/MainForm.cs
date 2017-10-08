@@ -1,6 +1,4 @@
-﻿//TODO| need more informative control names
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
@@ -278,7 +276,7 @@ namespace StrEnc.Application
         
         private void TextSelectionChanged()
         // For a RichTextBox, selection is changed before textchanged is fired. This could lead to problems, of course.
-        //TODO| how do you know that the regular TB doesn't have this problem???
+        //TODO| how do you know that the TB doesn't have a similar problem with those keyboard events???
         {
             if (selection_length != textbox_text.SelectionLength || selection_offset != textbox_text.SelectionStart) 
             {
@@ -287,8 +285,6 @@ namespace StrEnc.Application
         }
 
         private void RefreshSelectionDisplay()
-        /** updates selection in hexadecimal view based on text selection. does not check previous seloffset and sellength. */
-        // TODO| change "valid" to "error_state" or something
         {
             if (!vim.IsEncodingSupported())
                 return;
@@ -301,6 +297,8 @@ namespace StrEnc.Application
             int length_o = vim.GetEncodedLength(selection_offset);
             int errcount_l = vim.GetEncodingErrorCount(selection_end, selection_offset);
             int length_l = vim.GetEncodedLength(selection_end, selection_offset);
+
+            // update status bar text
 
             label_selectionstats.Text = "";
 
@@ -321,17 +319,37 @@ namespace StrEnc.Application
                 )
             ;
 
-            //TODO| make sure text won't overlap / become clipped (I reckon WPF would be much better at this)
+            // select the appropriate portion of the hexadecimal text
 
-            int et_selection_offset = 0;
-            int et_selection_length = 0;
+            int disp_off = 0;
+            int disp_len = 0;
 
             switch (vim.GroupingMode)
             {
+            case -1:
+            case 0:
+                int mode = (1 + vim.GroupingMode);
+                disp_off = length_o * 2 + selection_offset * mode + errcount_o * (vim.ErrorString.Length + mode);
+                disp_len = length_l * 2 + selection_length * mode + errcount_l * (vim.ErrorString.Length + mode);
+                if (mode != 0 & disp_len != 0) disp_len--;
+                break;
+            default:
+                if (vim.GetEncodingErrorState()) return;
 
+                int raw_len_pt1 = (length_o * 2 + errcount_o * vim.ErrorString.Length);
+                int raw_len = ((length_l + length_o) * 2 + (errcount_l + errcount_o) * vim.ErrorString.Length);
+
+                int n = vim.GroupingMode * 2;
+
+                disp_off = (raw_len_pt1 / n) * (n + 1) + raw_len_pt1 % n;
+                int disp_totallen_remainder = raw_len % n;
+                int disp_totallen = (raw_len / n) * (n + 1) + disp_totallen_remainder;
+                disp_len = disp_totallen - disp_off;
+                if (disp_totallen_remainder == 0 && disp_len != 0) disp_len--;
+                break;
             }
-            //TODO: maybe it's easier to modify ViewModel to allow parametrized GetHexText???
 
+            textbox_et.Select(disp_off, disp_len);
         }
 
         #endregion
