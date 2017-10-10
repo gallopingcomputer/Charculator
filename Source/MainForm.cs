@@ -38,7 +38,7 @@ namespace StrEnc.Application
 
         public MainForm()
         {
-            InitializeComponent(); 
+            InitializeComponent();
 
             suppress_refresh = true;
 
@@ -48,24 +48,24 @@ namespace StrEnc.Application
 
             //*| initial values for display options and parameters
             //* [^] these raise the corresponding events, which is fine; note that the suppress_refresh field is used to prevent the wrong code from executing in the event handlers. These could have been done in InitializeComponent instead, but the designer might mess them up
-            cbutton_tdisplayoptions_monospaced.Checked = false; 
+            cbutton_tdisplayoptions_monospaced.Checked = false;
             cbutton_tdisplayoptions_wrap.Checked = true;
-            
+
             textbox_errstring.Text = "?-";
-            textbox_GR.Text = "0"; 
-            RadioButton_enc_UTF16LE.Checked = true; 
-            RadioButton_HashAlg_SHA1.Checked = true; 
+            textbox_GR.Text = "0";
+            RadioButton_enc_UTF16LE.Checked = true;
+            RadioButton_HashAlg_SHA1.Checked = true;
             // cbutton_et_markerrors.Checked = true; 
-            
+
             suppress_refresh = false;
-            
-            RefreshAll(); 
+
+            RefreshAll();
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.D)
-                ToggleAdvancedMode(); 
+                ToggleAdvancedMode();
         }
 
         //
@@ -93,15 +93,15 @@ namespace StrEnc.Application
             return ui_advancedmode;
         }
 
-        private void DisplayOption_Monospaced_CheckedChanged(object sender, EventArgs e) 
+        private void DisplayOption_Monospaced_CheckedChanged(object sender, EventArgs e)
         {
             string fontname = cbutton_tdisplayoptions_monospaced.Checked ? "Consolas" : "Segoe UI";
             textbox_text.Font = new System.Drawing.Font(fontname, 9);
         }
 
-        private void DisplayOption_WordWrap_CheckedChanged(object sender, EventArgs e) 
+        private void DisplayOption_WordWrap_CheckedChanged(object sender, EventArgs e)
         {
-            textbox_text.ScrollBars = 
+            textbox_text.ScrollBars =
                 (textbox_text.WordWrap = cbutton_tdisplayoptions_wrap.Checked)
                 ? ScrollBars.Vertical : ScrollBars.Both;
         }
@@ -113,7 +113,7 @@ namespace StrEnc.Application
         //
 
         #region formatting_options
-        
+
         // this only converts the text to int, and doesn't do any validation
         private (bool, int)? ConvertGRText(string gr_text)
         /* in case of fail: caller should revert to previous state */
@@ -128,8 +128,8 @@ namespace StrEnc.Application
                 int gr = Convert.ToInt32(gr_text);
                 return (true, gr);
             }
-            catch (FormatException) {}
-            catch (OverflowException) {}
+            catch (FormatException) { }
+            catch (OverflowException) { }
             return (false, 0);
         }
 
@@ -164,8 +164,8 @@ namespace StrEnc.Application
             int gr_diff = 0;
 
             switch (e.KeyCode) {
-            case Keys.Up:   gr_diff = 1;    break;
-            case Keys.Down: gr_diff = -1;   break;
+            case Keys.Up: gr_diff = 1; break;
+            case Keys.Down: gr_diff = -1; break;
             default: return;
             }
 
@@ -188,7 +188,7 @@ namespace StrEnc.Application
             e.Handled = true; // is this necessary???
         }
 
-        private void textbox_GR_TextChanged(object sender, EventArgs e) 
+        private void textbox_GR_TextChanged(object sender, EventArgs e)
         {
             if (suppress_vimupdate) return;
 
@@ -212,7 +212,7 @@ namespace StrEnc.Application
 
                 break;
             }
-        } 
+        }
 
         private void textbox_errstring_TextChanged(object sender, EventArgs e)
         {
@@ -226,7 +226,7 @@ namespace StrEnc.Application
                 SuppressVimUpdate(() => { textbox_errstring.Text = vim.ErrorString; });
         }
 
-        private void RefreshEncodedView() 
+        private void RefreshEncodedView()
         {
             if (!vim.IsEncodingSupported())
                 return;
@@ -260,23 +260,34 @@ namespace StrEnc.Application
         //
 
         #region textbox_text_selection
-        //TODO ??!| for some keys (such as Ctrl+A, but not including navigation keys), update selection is called in both keyup and keydown. FIX THIS. Figure out how many times these are called.
+
+        /* 
+            triggers for selection change include (but might not be limited to) the following conditions:
+            1. mouse click (right after (?) mousedown)
+            2. navigation/selection keys (arrow keys, Home/End, PgUp/PgDn, Ctrl+A, etc.)
+            3. text input hotkeys (Ctrl+V, delete)
+            4. character input
+
+            it would appear (?) that during keyboard events, selection only changes *after* the corresponding KeyDown and KeyPress events. This means it would be necessary to catch KeyUp as well.
+            This does not appear very consistent, at least not when debugging (?) - something KeyUp events seem to be dropped for no reason
+            //???| => Does that mean it's unnecessary to catch KeyDown? What about MouseDown???
+        */
 
         private void textbox_text_mouse(object sender, MouseEventArgs e) => TextSelectionChanged();
-        private void textbox_text_keyup(object sender, KeyEventArgs e) => TextSelectionChanged();
+        private void textbox_text_keyup(object sender, KeyEventArgs e) => TextSelectionChanged(); 
+        private void textbox_text_KeyPress(object sender, KeyPressEventArgs e) => TextSelectionChanged();
         private void textbox_text_keydown(object sender, KeyEventArgs e) 
         {
-            if (e.Control && e.KeyCode == Keys.A) {
+            /*if (e.Control && e.KeyCode == Keys.A) {
                 textbox_text.SelectAll(); 
                 e.Handled = true; e.SuppressKeyPress = true; //TODO| ???
-            }
+            }*/ // bug fixed in .NET Framework 4.7 (see https://stackoverflow.com/questions/16197915/how-can-i-allow-ctrla-with-textbox-in-winform)
 
-            //TextSelectionChanged(); 
+            TextSelectionChanged(); 
         }
-        
+
+
         private void TextSelectionChanged()
-        // For a RichTextBox, selection is changed before textchanged is fired. This could lead to problems, of course.
-        //TODO| how do you know that the TB doesn't have a similar problem with those keyboard events???
         {
             if (selection_length != textbox_text.SelectionLength || selection_offset != textbox_text.SelectionStart) 
             {

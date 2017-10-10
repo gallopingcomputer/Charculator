@@ -1,7 +1,4 @@
-﻿using StrEnc;
-using StrEnc.Info;
-
-namespace StrEnc.Application
+﻿namespace StrEnc.Application
 {
 	public partial class MainForm
 	{
@@ -449,6 +446,7 @@ namespace StrEnc.Application
             this.textbox_text.WordWrap = false;
             this.textbox_text.TextChanged += new System.EventHandler(this.textbox_text_TextChanged);
             this.textbox_text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textbox_text_keydown);
+            this.textbox_text.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_text_KeyPress);
             this.textbox_text.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textbox_text_keyup);
             this.textbox_text.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textbox_text_mouse);
             this.textbox_text.MouseUp += new System.Windows.Forms.MouseEventHandler(this.textbox_text_mouse);
