@@ -268,24 +268,13 @@ namespace StrEnc.Application
             3. text input hotkeys (Ctrl+V, delete)
             4. character input
 
-            it would appear (?) that during keyboard events, selection only changes *after* the corresponding KeyDown and KeyPress events. This means it would be necessary to catch KeyUp as well.
+            it would appear (?) that during keyboard events, selection only changes *after* the corresponding KeyDown and KeyPress events. This means it would be necessary to catch KeyPress/KeyUp; there is no real need to catch KeyDown.
             This does not appear very consistent, at least not when debugging (?) - something KeyUp events seem to be dropped for no reason
-            //???| => Does that mean it's unnecessary to catch KeyDown? What about MouseDown???
         */
 
-        private void textbox_text_mouse(object sender, MouseEventArgs e) => TextSelectionChanged();
-        private void textbox_text_keyup(object sender, KeyEventArgs e) => TextSelectionChanged(); 
+        private void textbox_text_MouseUp(object sender, MouseEventArgs e) => TextSelectionChanged();
+        private void textbox_text_KeyUp(object sender, KeyEventArgs e) => TextSelectionChanged();
         private void textbox_text_KeyPress(object sender, KeyPressEventArgs e) => TextSelectionChanged();
-        private void textbox_text_keydown(object sender, KeyEventArgs e) 
-        {
-            /*if (e.Control && e.KeyCode == Keys.A) {
-                textbox_text.SelectAll(); 
-                e.Handled = true; e.SuppressKeyPress = true; //TODO| ???
-            }*/ // bug fixed in .NET Framework 4.7 (see https://stackoverflow.com/questions/16197915/how-can-i-allow-ctrla-with-textbox-in-winform)
-
-            TextSelectionChanged(); 
-        }
-
 
         private void TextSelectionChanged()
         {
