@@ -10,7 +10,7 @@ using System.Resources;
 [assembly: AssemblyDescription("A tool that shows the encoding and hash value of strings.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("J.H. Song")]
-[assembly: AssemblyProduct("StrEnc")]
+[assembly: AssemblyProduct("Charculator")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -33,6 +33,6 @@ using System.Resources;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.8.0.100")]
-[assembly: AssemblyFileVersion("1.8.0.100")]
+[assembly: AssemblyVersion("1.8.0.108")]
+[assembly: AssemblyFileVersion("1.8.0.108")]
 [assembly: NeutralResourcesLanguageAttribute("en")]
