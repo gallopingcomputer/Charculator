@@ -146,7 +146,7 @@
             this.RadioButton_enc_SystemDefault.Name = "RadioButton_enc_SystemDefault";
             this.RadioButton_enc_SystemDefault.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_enc_SystemDefault.TabIndex = 0;
-            this.RadioButton_enc_SystemDefault.Tag = StrEnc.Info.Encodings.EncodingId.SystemDefault;
+            this.RadioButton_enc_SystemDefault.Tag = StrEnc.Encodings.EncodingId.SystemDefault;
             this.RadioButton_enc_SystemDefault.Text = "System default";
             this.RadioButton_enc_SystemDefault.UseVisualStyleBackColor = true;
             this.RadioButton_enc_SystemDefault.CheckedChanged += new System.EventHandler(this.EncodingMode_CheckedChanged);
@@ -159,7 +159,7 @@
             this.RadioButton_enc_ASCII.Name = "RadioButton_enc_ASCII";
             this.RadioButton_enc_ASCII.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_enc_ASCII.TabIndex = 1;
-            this.RadioButton_enc_ASCII.Tag = StrEnc.Info.Encodings.EncodingId.ASCII;
+            this.RadioButton_enc_ASCII.Tag = StrEnc.Encodings.EncodingId.ASCII;
             this.RadioButton_enc_ASCII.Text = "ASCII";
             this.RadioButton_enc_ASCII.UseVisualStyleBackColor = true;
             this.RadioButton_enc_ASCII.CheckedChanged += new System.EventHandler(this.EncodingMode_CheckedChanged);
@@ -172,7 +172,7 @@
             this.RadioButton_enc_UTF7.Name = "RadioButton_enc_UTF7";
             this.RadioButton_enc_UTF7.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_enc_UTF7.TabIndex = 2;
-            this.RadioButton_enc_UTF7.Tag = StrEnc.Info.Encodings.EncodingId.UTF7;
+            this.RadioButton_enc_UTF7.Tag = StrEnc.Encodings.EncodingId.UTF7;
             this.RadioButton_enc_UTF7.Text = "UTF-7";
             this.RadioButton_enc_UTF7.UseVisualStyleBackColor = true;
             this.RadioButton_enc_UTF7.CheckedChanged += new System.EventHandler(this.EncodingMode_CheckedChanged);
@@ -185,7 +185,7 @@
             this.RadioButton_enc_UTF8.Name = "RadioButton_enc_UTF8";
             this.RadioButton_enc_UTF8.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_enc_UTF8.TabIndex = 3;
-            this.RadioButton_enc_UTF8.Tag = StrEnc.Info.Encodings.EncodingId.UTF8;
+            this.RadioButton_enc_UTF8.Tag = StrEnc.Encodings.EncodingId.UTF8;
             this.RadioButton_enc_UTF8.Text = "UTF-8";
             this.RadioButton_enc_UTF8.UseVisualStyleBackColor = true;
             this.RadioButton_enc_UTF8.CheckedChanged += new System.EventHandler(this.EncodingMode_CheckedChanged);
@@ -198,7 +198,7 @@
             this.RadioButton_enc_UTF16LE.Name = "RadioButton_enc_UTF16LE";
             this.RadioButton_enc_UTF16LE.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_enc_UTF16LE.TabIndex = 4;
-            this.RadioButton_enc_UTF16LE.Tag = StrEnc.Info.Encodings.EncodingId.UTF16LE;
+            this.RadioButton_enc_UTF16LE.Tag = StrEnc.Encodings.EncodingId.UTF16LE;
             this.RadioButton_enc_UTF16LE.Text = "UTF-16 LE";
             this.RadioButton_enc_UTF16LE.UseVisualStyleBackColor = true;
             this.RadioButton_enc_UTF16LE.CheckedChanged += new System.EventHandler(this.EncodingMode_CheckedChanged);
@@ -211,7 +211,7 @@
             this.RadioButton_enc_UTF32LE.Name = "RadioButton_enc_UTF32LE";
             this.RadioButton_enc_UTF32LE.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_enc_UTF32LE.TabIndex = 5;
-            this.RadioButton_enc_UTF32LE.Tag = StrEnc.Info.Encodings.EncodingId.UTF32LE;
+            this.RadioButton_enc_UTF32LE.Tag = StrEnc.Encodings.EncodingId.UTF32LE;
             this.RadioButton_enc_UTF32LE.Text = "UTF-32 LE";
             this.RadioButton_enc_UTF32LE.UseVisualStyleBackColor = true;
             this.RadioButton_enc_UTF32LE.CheckedChanged += new System.EventHandler(this.EncodingMode_CheckedChanged);
@@ -224,7 +224,7 @@
             this.RadioButton_enc_Custom.Name = "RadioButton_enc_Custom";
             this.RadioButton_enc_Custom.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_enc_Custom.TabIndex = 6;
-            this.RadioButton_enc_Custom.Tag = StrEnc.Info.Encodings.EncodingId.Undefined;
+            this.RadioButton_enc_Custom.Tag = StrEnc.Encodings.EncodingId.Undefined;
             this.RadioButton_enc_Custom.Text = "Codepage:";
             this.RadioButton_enc_Custom.UseVisualStyleBackColor = true;
             this.RadioButton_enc_Custom.CheckedChanged += new System.EventHandler(this.EncodingMode_CheckedChanged);
@@ -335,7 +335,7 @@
             this.RadioButton_HashAlg_SHA1.Name = "RadioButton_HashAlg_SHA1";
             this.RadioButton_HashAlg_SHA1.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_HashAlg_SHA1.TabIndex = 1;
-            this.RadioButton_HashAlg_SHA1.Tag = StrEnc.Info.Hashing.HashAlgId.SHA1;
+            this.RadioButton_HashAlg_SHA1.Tag = StrEnc.Hashing.HashAlgId.SHA1;
             this.RadioButton_HashAlg_SHA1.Text = "SHA-1";
             this.RadioButton_HashAlg_SHA1.UseVisualStyleBackColor = true;
             this.RadioButton_HashAlg_SHA1.CheckedChanged += new System.EventHandler(this.HashAlg_CheckedChanged);
@@ -348,7 +348,7 @@
             this.RadioButton_HashAlg_MD5.Name = "RadioButton_HashAlg_MD5";
             this.RadioButton_HashAlg_MD5.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_HashAlg_MD5.TabIndex = 2;
-            this.RadioButton_HashAlg_MD5.Tag = StrEnc.Info.Hashing.HashAlgId.MD5;
+            this.RadioButton_HashAlg_MD5.Tag = StrEnc.Hashing.HashAlgId.MD5;
             this.RadioButton_HashAlg_MD5.Text = "MD5";
             this.RadioButton_HashAlg_MD5.UseVisualStyleBackColor = true;
             this.RadioButton_HashAlg_MD5.CheckedChanged += new System.EventHandler(this.HashAlg_CheckedChanged);
@@ -361,7 +361,7 @@
             this.RadioButton_HashAlg_SHA256.Name = "RadioButton_HashAlg_SHA256";
             this.RadioButton_HashAlg_SHA256.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_HashAlg_SHA256.TabIndex = 3;
-            this.RadioButton_HashAlg_SHA256.Tag = StrEnc.Info.Hashing.HashAlgId.SHA256;
+            this.RadioButton_HashAlg_SHA256.Tag = StrEnc.Hashing.HashAlgId.SHA256;
             this.RadioButton_HashAlg_SHA256.Text = "SHA2-256";
             this.RadioButton_HashAlg_SHA256.UseVisualStyleBackColor = true;
             this.RadioButton_HashAlg_SHA256.CheckedChanged += new System.EventHandler(this.HashAlg_CheckedChanged);
@@ -374,7 +374,7 @@
             this.RadioButton_HashAlg_SHA512.Name = "RadioButton_HashAlg_SHA512";
             this.RadioButton_HashAlg_SHA512.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_HashAlg_SHA512.TabIndex = 4;
-            this.RadioButton_HashAlg_SHA512.Tag = StrEnc.Info.Hashing.HashAlgId.SHA512;
+            this.RadioButton_HashAlg_SHA512.Tag = StrEnc.Hashing.HashAlgId.SHA512;
             this.RadioButton_HashAlg_SHA512.Text = "SHA2-512";
             this.RadioButton_HashAlg_SHA512.UseVisualStyleBackColor = true;
             this.RadioButton_HashAlg_SHA512.CheckedChanged += new System.EventHandler(this.HashAlg_CheckedChanged);
@@ -387,7 +387,7 @@
             this.RadioButton_HashAlg_SHA384.Name = "RadioButton_HashAlg_SHA384";
             this.RadioButton_HashAlg_SHA384.Size = new System.Drawing.Size(104, 19);
             this.RadioButton_HashAlg_SHA384.TabIndex = 5;
-            this.RadioButton_HashAlg_SHA384.Tag = StrEnc.Info.Hashing.HashAlgId.SHA384;
+            this.RadioButton_HashAlg_SHA384.Tag = StrEnc.Hashing.HashAlgId.SHA384;
             this.RadioButton_HashAlg_SHA384.Text = "SHA2-384";
             this.RadioButton_HashAlg_SHA384.UseVisualStyleBackColor = true;
             this.RadioButton_HashAlg_SHA384.CheckedChanged += new System.EventHandler(this.HashAlg_CheckedChanged);

@@ -2,7 +2,7 @@ using System;
 using System.Security.Cryptography;
 using System.Collections.Generic;
 
-namespace StrEnc.Info
+namespace StrEnc
 {
     public static class Hashing
     {

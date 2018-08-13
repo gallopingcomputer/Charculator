@@ -2,12 +2,10 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 
-namespace StrEnc.Info
+namespace StrEnc
 {
     public static class Encodings
     {
-        //TODO| OOP design: consider turning EncodingId into a class instead (and have a member field that stores the cached enc object) wait WHAT NO!
-
         public enum EncodingId { 
             Undefined = -1, 
             SystemDefault = 0, 
@@ -17,8 +15,8 @@ namespace StrEnc.Info
             UTF16LE = 1200,
             UTF32LE = 12000
         }
-        const EncodingId MIN_VALID_ENCODINGID = (EncodingId)0;
-        const EncodingId MAX_VALID_ENCODINGID = (EncodingId)65535;
+        const EncodingId ENCODINGID_MIN = (EncodingId)0;
+        const EncodingId ENCODINGID_MAX = (EncodingId)65535;
 
         public static string GetNumericalName(this EncodingId enc_id)
             => ((int)enc_id).ToString();

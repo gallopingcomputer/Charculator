@@ -64,7 +64,8 @@
       <SubType>Form</SubType>
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\ViewModel.cs" />
+    <Compile Include="Source\RadixPrint.cs" />
+    <Compile Include="Source\StringInfoView.cs" />
     <Compile Include="Source\Encodings.cs" />
     <Compile Include="Source\Hashing.cs" />
     <EmbeddedResource Include="Source\MainForm.resx">
