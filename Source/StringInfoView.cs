@@ -11,7 +11,7 @@ namespace StrEnc
         {
             _text = "";
             _enc_id = 0;
-            _grouping_mode = 0;
+            _grouping_mode = -1;
             _error_string = "?-";
             hashalg_id = Hashing.HashAlgId.SHA1;
 
@@ -171,11 +171,11 @@ namespace StrEnc
         
         public string GetHexadecimalText()
         // returns null if there are encoding errors && gr != 0 (we currently assume that the error_string parameter does not generate conditional/dynamically-determined errors, which might change if, say, we add display modes other than hexadecimal)
-            => (GetEncodingErrorCount() != 0 && GroupingMode != 0) ? null : RadixPrint.GetFormattedHexadecimal(_encoded_text, GroupingMode, ErrorString);
+            => (GetEncodingErrorCount() != 0 && GroupingMode != 0) ? null : RadixPrint.PrintFormattedHexadecimalEx(_encoded_text, GroupingMode, ErrorString);
 
         public string GetHashText()
         // returns null if there are encoding errors
-            => RadixPrint.GetHexadecimalForByteGroup(Hashing.GetHashValue(_encoded_text_flattened, hashalg_id));
+            => RadixPrint.PrintFormattedHexadecimal(Hashing.GetHashValue(_encoded_text_flattened, hashalg_id));
 
     }
 }
